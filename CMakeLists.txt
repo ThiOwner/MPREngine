@@ -24,6 +24,8 @@ set(SRC_FILES
         VxlE_window.cpp
         VxlE_window.cpp
         include/src/glad.c
+        VxlE_shaders.hpp
+        VxlE_shader.cpp
 )
 
 # Create the executable
@@ -34,3 +36,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/i
 
 # Link GLFW to the OpenGL library
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw opengl32)
+
+# Copy the shaders in the runtime environment.
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/shaders
+        DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

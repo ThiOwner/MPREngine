@@ -5,8 +5,8 @@
 
 namespace VxlE {
 
-    VxlE_window::VxlE_window(){}
-    VxlE_window::~VxlE_window(){}
+    VxlE_window::VxlE_window() = default;
+    VxlE_window::~VxlE_window() = default;
 
     int VxlE_window::initializeWindow() {
         // Initialize window

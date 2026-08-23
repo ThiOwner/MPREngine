@@ -1,5 +1,6 @@
 #pragma once
 #include "VxlE_window.hpp"
+#include "VxlE_shaders.hpp"
 
 namespace VxlE {
 
@@ -12,6 +13,7 @@ namespace VxlE {
 
         private:
             VxlE_window window;
+            VxlE_shaders shaders{"shaders/vertex.vert", "shaders/fragment.frag"};
 
     };
 
