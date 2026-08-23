@@ -1,6 +1,8 @@
 #pragma once
+#include "VxlE_app.hpp"
 #include "VxlE_window.hpp"
 #include "VxlE_shaders.hpp"
+#include "VxlE_mesh.hpp"
 
 namespace VxlE {
 

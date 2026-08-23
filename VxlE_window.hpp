@@ -12,7 +12,10 @@ namespace VxlE {
         public:
             VxlE_window();
             ~VxlE_window();
-
+            
+            VxlE_window(const VxlE_window&) = delete;
+            VxlE_window& operator=(const VxlE_window&) = delete;
+        
             int initializeWindow();
             void closeWindow();
 

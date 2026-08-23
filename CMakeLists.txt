@@ -25,7 +25,9 @@ set(SRC_FILES
         VxlE_window.cpp
         include/src/glad.c
         VxlE_shaders.hpp
-        VxlE_shader.cpp
+        VxlE_shaders.cpp
+        VxlE_mesh.hpp
+        VxlE_mesh.cpp
 )
 
 # Create the executable

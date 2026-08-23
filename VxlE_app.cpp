@@ -1,8 +1,14 @@
 #include "VxlE_app.hpp"
-#include "VxlE_window.hpp"
 
+#include <vector>
 
 namespace VxlE {
+
+    std::vector<float> triangleVertices = {
+        -0.5f, -0.5f, 0.0f,
+         0.5f, -0.5f, 0.0f,
+         0.0f,  0.5f, 0.0f
+    };
 
     VxlE_app::VxlE_app() = default;
     VxlE_app::~VxlE_app() = default;
@@ -14,6 +20,9 @@ namespace VxlE {
         // Compile shaders
         shaders.compileShaders();
 
+        // Hello triangle
+        VxlE_mesh triangle(triangleVertices);
+
         // Render loop
         while (!window.shouldClose()) {
 
@@ -23,6 +32,8 @@ namespace VxlE {
             glClear(GL_COLOR_BUFFER_BIT);
 
             shaders.bindShaderProgram();
+
+            triangle.draw();
 
             window.swapBuffers();
         }
