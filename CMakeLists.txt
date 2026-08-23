@@ -1,6 +1,6 @@
 # CMakeLists.txt
 cmake_minimum_required(VERSION 3.20)
-project(VxlE_OpenGL)
+project(VxlE_Engine)
 
 set(CMAKE_CXX_STANDARD 17)
 
