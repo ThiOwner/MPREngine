@@ -15,7 +15,10 @@ namespace VxlE {
 
             int initializeWindow();
             void closeWindow();
-            void runWindow();
+
+            [[nodiscard]] bool shouldClose() const { return glfwWindowShouldClose(window); }
+            void pollEvents() const { glfwPollEvents(); }
+            void swapBuffers() const { glfwSwapBuffers(window); }
 
         private:
             const int HEIGHT = 600;

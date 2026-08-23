@@ -38,17 +38,6 @@ namespace VxlE {
         glfwTerminate();
     }
 
-    void VxlE_window::runWindow() {
-        while(!glfwWindowShouldClose(window))
-        {
-            glfwSwapBuffers(window);
-            glfwPollEvents();
-
-            glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-            glClear(GL_COLOR_BUFFER_BIT);
-        }
-    }
-
     void VxlE_window::setFramebufferSizeCallback(GLFWwindow* window, int width, int height) {
         glViewport(0,0,width,height);
     }

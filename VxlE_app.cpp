@@ -10,11 +10,23 @@ namespace VxlE {
     void VxlE_app::run() {
         // Initialize en creating the window
         window.initializeWindow();
-        window.runWindow();
 
-        // Compile shaders and create shaderProgram
+        // Compile shaders
         shaders.compileShaders();
-        shaders.bindShaderProgram();
+
+        // Render loop
+        while (!window.shouldClose()) {
+
+            window.pollEvents();
+
+            glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+            glClear(GL_COLOR_BUFFER_BIT);
+
+            shaders.bindShaderProgram();
+
+            window.swapBuffers();
+        }
+
     }
 
 }
