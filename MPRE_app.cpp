@@ -33,12 +33,24 @@ namespace MPRE {
         while (!window->shouldClose()) {
             window->pollEvents();
 
+            // Wireframe mode on "Z" input
+            if (window->isKeyPressed(GLFW_KEY_Z)) {
+                if (!wireframeKeyPressed) {
+                    ifWireframe = !ifWireframe;
+                    if (ifWireframe) { glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); }
+                    else { glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); }
+                    wireframeKeyPressed = true;
+                }
+            } else {
+                wireframeKeyPressed = false;
+            }
+
             glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
-            flatSquare.draw();
-
             shaders->bindShaderProgram();
+
+            flatSquare.draw();
 
             window->swapBuffers();
         }

@@ -23,6 +23,8 @@ namespace MPRE {
             void pollEvents() const { glfwPollEvents(); }
             void swapBuffers() const { glfwSwapBuffers(window); }
 
+            [[nodiscard]] bool isKeyPressed(int keyCode) const { return glfwGetKey(window, keyCode) == GLFW_PRESS; }
+
         private:
             const int HEIGHT = 600;
             const int WIDTH = 800;
