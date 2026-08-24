@@ -1,6 +1,6 @@
-#include "VxlE_shaders.hpp"
+#include "MPRE_shaders.hpp"
 
-namespace VxlE {
+namespace MPRE {
 
     std::string getFileData(const std::string& filepath) {
         std::ifstream file(filepath);
@@ -16,16 +16,16 @@ namespace VxlE {
         return buffer.str();
     }
 
-    VxlE_shaders::VxlE_shaders(const std::string& vertexPath, const std::string& fragmentPath) {
+    MPRE_shaders::MPRE_shaders(const std::string& vertexPath, const std::string& fragmentPath) {
         vertexShaderSource = getFileData(vertexPath);
         fragmentShaderSource = getFileData(fragmentPath);
     }
 
-    VxlE_shaders::~VxlE_shaders() {
+    MPRE_shaders::~MPRE_shaders() {
         glDeleteProgram(shaderProgram);
     };
 
-    void VxlE_shaders::compileShaders() {
+    void MPRE_shaders::compileShaders() {
         int  success;
         char infoLog[512];
 
@@ -74,11 +74,11 @@ namespace VxlE {
         glDeleteShader(fragmentShader);
     }
 
-    void VxlE_shaders::bindShaderProgram() {
+    void MPRE_shaders::bindShaderProgram() {
         glUseProgram(shaderProgram);
     }
 
-    void VxlE_shaders::unbindShaderProgram() {
+    void MPRE_shaders::unbindShaderProgram() {
         glUseProgram(0);
     }
 }

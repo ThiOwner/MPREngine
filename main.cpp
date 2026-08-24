@@ -1,4 +1,4 @@
-#include "VxlE_app.hpp"
+#include "MPRE_app.hpp"
 
 #include <cstdlib>
 #include <iostream>
@@ -6,7 +6,7 @@
 #include <stdexcept>
 
 int main() {
-        VxlE::VxlE_app app;
+        MPRE::MPRE_app app;
 
         try {
                 app.run();

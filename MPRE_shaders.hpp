@@ -8,15 +8,15 @@
 
 #include "glad/glad.h"
 
-namespace VxlE {
+namespace MPRE {
 
-    class VxlE_shaders {
+    class MPRE_shaders {
         public:
-            VxlE_shaders(const std::string& vertexPath, const std::string& fragmentPath);
-            ~VxlE_shaders();
+            MPRE_shaders(const std::string& vertexPath, const std::string& fragmentPath);
+            ~MPRE_shaders();
 
-            VxlE_shaders(const VxlE_shaders&) = delete;
-            VxlE_shaders& operator=(const VxlE_shaders&) = delete;
+            MPRE_shaders(const MPRE_shaders&) = delete;
+            MPRE_shaders& operator=(const MPRE_shaders&) = delete;
 
             void compileShaders();
             void bindShaderProgram();

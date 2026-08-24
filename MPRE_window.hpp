@@ -5,16 +5,16 @@
 
 #include <stdexcept>
 
-namespace VxlE {
+namespace MPRE {
 
-    class VxlE_window {
+    class MPRE_window {
 
         public:
-            VxlE_window();
-            ~VxlE_window();
+            MPRE_window();
+            ~MPRE_window();
             
-            VxlE_window(const VxlE_window&) = delete;
-            VxlE_window& operator=(const VxlE_window&) = delete;
+            MPRE_window(const MPRE_window&) = delete;
+            MPRE_window& operator=(const MPRE_window&) = delete;
         
             int initializeWindow();
             void closeWindow();

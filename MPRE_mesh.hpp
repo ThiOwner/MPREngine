@@ -2,15 +2,15 @@
 
 #include <vector>
 
-namespace VxlE {
+namespace MPRE {
 
-    class VxlE_mesh {
+    class MPRE_mesh {
         public:
-            VxlE_mesh(std::vector<float> &vertices);
-            ~VxlE_mesh();
+            MPRE_mesh(std::vector<float> &vertices);
+            ~MPRE_mesh();
 
-            VxlE_mesh(const VxlE_mesh&) = delete;
-            VxlE_mesh& operator=(const VxlE_mesh&) = delete;
+            MPRE_mesh(const MPRE_mesh&) = delete;
+            MPRE_mesh& operator=(const MPRE_mesh&) = delete;
 
             void bind() const;
             void unbind() const;

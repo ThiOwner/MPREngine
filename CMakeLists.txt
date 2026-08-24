@@ -1,6 +1,6 @@
 # CMakeLists.txt
 cmake_minimum_required(VERSION 3.20)
-project(VxlE_Engine)
+project(MPREngine)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -18,16 +18,16 @@ FetchContent_MakeAvailable(glfw)
 # Sources files
 set(SRC_FILES
         main.cpp
-        VxlE_app.hpp
-        VxlE_app.cpp
-        VxlE_window.hpp
-        VxlE_window.cpp
-        VxlE_window.cpp
+        MPRE_app.hpp
+        MPRE_app.cpp
+        MPRE_window.hpp
+        MPRE_window.cpp
+        MPRE_window.cpp
         include/src/glad.c
-        VxlE_shaders.hpp
-        VxlE_shaders.cpp
-        VxlE_mesh.hpp
-        VxlE_mesh.cpp
+        MPRE_shaders.hpp
+        MPRE_shaders.cpp
+        MPRE_mesh.hpp
+        MPRE_mesh.cpp
 )
 
 # Create the executable
