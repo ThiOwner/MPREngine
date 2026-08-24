@@ -1,10 +1,8 @@
 #include "MPRE_mesh.hpp"
 
-#include "glad/glad.h"
-
 namespace MPRE {
 
-    MPRE_mesh::MPRE_mesh(std::vector<float> &vertices) {
+    MPRE_mesh::MPRE_mesh(std::vector<float> &vertices, std::vector<unsigned int> &indices) {
         vertexCount = vertices.size() / 6;
 
         glGenVertexArrays(1, &VAO);
@@ -14,6 +12,14 @@ namespace MPRE {
 
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
         glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
+
+        if (!indices.empty()) {
+            glGenBuffers(1, &EBO);
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+            glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), indices.data(), GL_STATIC_DRAW);
+
+            indexCount = indices.size();
+        }
 
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(0);
@@ -40,7 +46,11 @@ namespace MPRE {
 
     void MPRE_mesh::draw() const {
         bind();
-        glDrawArrays(GL_TRIANGLES, 0, vertexCount);
+        if (indexCount > 0) {
+            glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
+        } else {
+            glDrawArrays(GL_TRIANGLES, 0, vertexCount);
+        }
         unbind();
     }
 

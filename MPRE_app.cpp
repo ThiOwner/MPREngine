@@ -4,11 +4,16 @@
 
 namespace MPRE {
 
-    std::vector<float> triangleVertices = {
-        // positions         // colors
-        0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
+    // Testing values
+    std::vector<float> vertices = {
+        0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 0.0f,   // top right
+        0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f,   // bottom right
        -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
-        0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // top
+       -0.5f,  0.5f, 0.0f,  1.0f, 0.0f, 1.0f   // top left
+   };
+    std::vector<unsigned int> indices = {
+        0, 1, 3,   // first triangle
+        1, 2, 3    // second triangle
     };
 
     MPRE_app::MPRE_app() = default;
@@ -21,20 +26,19 @@ namespace MPRE {
         // Compile shaders
         shaders->compileShaders();
 
-        // Hello triangle
-        MPRE_mesh triangle(triangleVertices);
+        // Flat square test
+        MPRE_mesh flatSquare(vertices, indices);
 
         // Render loop
         while (!window->shouldClose()) {
-
             window->pollEvents();
 
             glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
-            shaders->bindShaderProgram();
+            flatSquare.draw();
 
-            triangle.draw();
+            shaders->bindShaderProgram();
 
             window->swapBuffers();
         }

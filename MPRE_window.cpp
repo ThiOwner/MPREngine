@@ -1,8 +1,5 @@
 #include "MPRE_window.hpp"
 
-#include <iostream>
-#include <ostream>
-
 namespace MPRE {
 
     MPRE_window::MPRE_window() = default;
