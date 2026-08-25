@@ -2,6 +2,8 @@
 
 #include <vector>
 
+#include "glm/trigonometric.hpp"
+
 namespace MPRE {
 
     // Testing values
@@ -32,6 +34,7 @@ namespace MPRE {
         // Render loop
         while (!window->shouldClose()) {
             window->pollEvents();
+            double timeValue = glfwGetTime();
 
             // Wireframe mode on "Z" input
             if (window->isKeyPressed(GLFW_KEY_Z)) {
@@ -49,6 +52,7 @@ namespace MPRE {
             glClear(GL_COLOR_BUFFER_BIT);
 
             shaders->bindShaderProgram();
+            shaders->setFloat("y_offset", sin(timeValue)/3);
 
             flatSquare.draw();
 

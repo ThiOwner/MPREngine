@@ -22,6 +22,19 @@ namespace MPRE {
             void bindShaderProgram();
             void unbindShaderProgram();
 
+            void setBool(const std::string& name, const bool value) const {
+                glUniform1i(glGetUniformLocation(shaderProgram, name.c_str()), static_cast<int>(value));
+            }
+
+            void setInt(const std::string &name, const int value) const {
+                glUniform1i(glGetUniformLocation(shaderProgram, name.c_str()), value);
+            }
+
+            void setFloat(const std::string &name, const float value) const {
+                glUniform1f(glGetUniformLocation(shaderProgram, name.c_str()), value);
+            }
+
+
         private:
             [[nodiscard]] const char* getVertexSource() const {return vertexShaderSource.c_str();}
             [[nodiscard]] const char* getFragmentSource() const {return fragmentShaderSource.c_str();}
