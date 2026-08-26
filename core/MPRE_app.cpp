@@ -16,9 +16,13 @@ namespace MPRE {
         MPRE_3DPrimitive cube(MPRE_PRIMITIVE_3D_TYPE::CUBE);
 
         // Render loop
+        double lastTime = 0;
         while (!window->shouldClose()) {
             window->pollEvents();
-            double timeValue = glfwGetTime();
+
+            // Delta time
+            double deltaTime = glfwGetTime()-lastTime;
+            lastTime = glfwGetTime();
 
             // Wireframe mode on "Z" input
             if (window->isKeyPressed(GLFW_KEY_Z)) {

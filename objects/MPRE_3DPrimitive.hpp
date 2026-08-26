@@ -1,11 +1,17 @@
 #pragma once
 
-#include <memory>
 #include "../core/MPRE_mesh.hpp"
+#include "../components/MPRE_Transform.hpp"
+
+#include <memory>
+#include <vector>
 
 enum MPRE_PRIMITIVE_3D_TYPE {CUBE};
 
 namespace MPRE {
+
+    // Mesh already created are cached here.
+    static std::unordered_map<MPRE_PRIMITIVE_3D_TYPE, std::shared_ptr<MPRE_mesh>> meshCache;
 
     class MPRE_3DPrimitive {
 
@@ -20,7 +26,9 @@ namespace MPRE {
             MPRE_PRIMITIVE_3D_TYPE type;
 
         private:
-            std::unique_ptr<MPRE_mesh> mesh;
+            std::shared_ptr<MPRE_mesh> mesh;
+            std::unique_ptr<MPRE_Transform> transform;
+
     };
 
 }

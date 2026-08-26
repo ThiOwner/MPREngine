@@ -1,5 +1,7 @@
 #include "MPRE_mesh.hpp"
 
+#include "glm/fwd.hpp"
+
 namespace MPRE {
 
     MPRE_mesh::MPRE_mesh(std::vector<float> &vertices, std::vector<unsigned int> &indices) {
@@ -34,6 +36,7 @@ namespace MPRE {
     MPRE_mesh::~MPRE_mesh() {
         glDeleteVertexArrays(1, &VAO);
         glDeleteBuffers(1, &VBO);
+        glDeleteBuffers(1, &EBO);
     }
 
     void MPRE_mesh::bind() const {

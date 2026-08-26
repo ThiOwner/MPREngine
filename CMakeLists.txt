@@ -41,6 +41,10 @@ set(SRC_FILES
 
         objects/MPRE_3DPrimitive.hpp
         objects/MPRE_3DPrimitive.cpp
+        
+        components/MPRE_Component.hpp
+        components/MPRE_Transform.hpp
+        components/MPRE_Transform.cpp
 )
 
 # Create the executable
