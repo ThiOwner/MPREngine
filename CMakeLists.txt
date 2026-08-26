@@ -27,16 +27,16 @@ FetchContent_MakeAvailable(glm)
 set(SRC_FILES
         include/src/glad.c
 
-        main.cpp
-        MPRE_app.hpp
-        MPRE_app.cpp
-        MPRE_window.hpp
-        MPRE_window.cpp
-        MPRE_window.cpp
-        MPRE_shaders.hpp
-        MPRE_shaders.cpp
-        MPRE_mesh.hpp
-        MPRE_mesh.cpp
+        main/main.cpp
+        core/MPRE_app.hpp
+        core/MPRE_app.cpp
+        core/MPRE_window.hpp
+        core/MPRE_window.cpp
+        core/MPRE_window.cpp
+        core/MPRE_shaders.hpp
+        core/MPRE_shaders.cpp
+        core/MPRE_mesh.hpp
+        core/MPRE_mesh.cpp
 )
 
 # Create the executable

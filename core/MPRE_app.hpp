@@ -1,10 +1,8 @@
 #pragma once
-#include "MPRE_app.hpp"
-#include "MPRE_window.hpp"
-#include "MPRE_shaders.hpp"
-#include "MPRE_mesh.hpp"
 
 #include <memory>
+#include "MPRE_window.hpp"
+#include "MPRE_shaders.hpp"
 
 namespace MPRE {
 

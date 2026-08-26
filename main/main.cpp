@@ -1,4 +1,4 @@
-#include "MPRE_app.hpp"
+#include "../core/MPRE_app.hpp"
 
 #include <cstdlib>
 #include <iostream>

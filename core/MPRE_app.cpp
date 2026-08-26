@@ -1,22 +1,6 @@
 #include "MPRE_app.hpp"
 
-#include <vector>
-
-#include "glm/trigonometric.hpp"
-
 namespace MPRE {
-
-    // Testing values
-    std::vector<float> vertices = {
-        0.5f,  0.5f, 0.0f,  1.0f, 1.0f, 0.0f,   // top right
-        0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f,   // bottom right
-       -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
-       -0.5f,  0.5f, 0.0f,  1.0f, 0.0f, 1.0f   // top left
-   };
-    std::vector<unsigned int> indices = {
-        0, 1, 3,   // first triangle
-        1, 2, 3    // second triangle
-    };
 
     MPRE_app::MPRE_app() = default;
     MPRE_app::~MPRE_app() = default;
@@ -27,9 +11,6 @@ namespace MPRE {
 
         // Compile shaders
         shaders->compileShaders();
-
-        // Flat square test
-        MPRE_mesh flatSquare(vertices, indices);
 
         // Render loop
         while (!window->shouldClose()) {
@@ -52,9 +33,6 @@ namespace MPRE {
             glClear(GL_COLOR_BUFFER_BIT);
 
             shaders->bindShaderProgram();
-            shaders->setFloat("y_offset", sin(timeValue)/3);
-
-            flatSquare.draw();
 
             window->swapBuffers();
         }
