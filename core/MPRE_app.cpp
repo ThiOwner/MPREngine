@@ -12,6 +12,9 @@ namespace MPRE {
         // Compile shaders
         shaders->compileShaders();
 
+        // Creating 3D primitive
+        MPRE_3DPrimitive cube(MPRE_PRIMITIVE_3D_TYPE::CUBE);
+
         // Render loop
         while (!window->shouldClose()) {
             window->pollEvents();
@@ -33,6 +36,8 @@ namespace MPRE {
             glClear(GL_COLOR_BUFFER_BIT);
 
             shaders->bindShaderProgram();
+
+            cube.draw();
 
             window->swapBuffers();
         }

@@ -28,6 +28,7 @@ set(SRC_FILES
         include/src/glad.c
 
         main/main.cpp
+
         core/MPRE_app.hpp
         core/MPRE_app.cpp
         core/MPRE_window.hpp
@@ -37,6 +38,9 @@ set(SRC_FILES
         core/MPRE_shaders.cpp
         core/MPRE_mesh.hpp
         core/MPRE_mesh.cpp
+
+        objects/MPRE_3DPrimitive.hpp
+        objects/MPRE_3DPrimitive.cpp
 )
 
 # Create the executable

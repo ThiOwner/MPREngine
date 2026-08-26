@@ -3,6 +3,7 @@
 #include <memory>
 #include "MPRE_window.hpp"
 #include "MPRE_shaders.hpp"
+#include "../objects/MPRE_3DPrimitive.hpp"
 
 namespace MPRE {
 
