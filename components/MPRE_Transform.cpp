@@ -2,7 +2,7 @@
 
 namespace MPRE {
 
-    glm::mat4 MPRE_Transform::getModelMatrix() {
+    void MPRE_Transform::computeModelMatrix() {
         glm::mat4 transform = glm::mat4(1.0f);
         transform = glm::translate(transform, position);
 
@@ -12,7 +12,7 @@ namespace MPRE {
 
         transform = glm::scale(transform, scale);
 
-        return transform;
+        modelMatrix = transform;
     }
 
 }

@@ -10,10 +10,14 @@ namespace MPRE {
         window->initializeWindow();
 
         // Compile shaders
-        shaders->compileShaders();
+        defaultShaders->compileShaders();
 
         // Creating 3D primitive
         MPRE_3DPrimitive cube(MPRE_PRIMITIVE_3D_TYPE::CUBE);
+        cube.transform->setScale(glm::vec3(0.5f));
+
+        // Enable depth calculations
+        glEnable(GL_DEPTH_TEST);
 
         // Render loop
         double lastTime = 0;
@@ -37,11 +41,12 @@ namespace MPRE {
             }
 
             glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-            glClear(GL_COLOR_BUFFER_BIT);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-            shaders->bindShaderProgram();
+            defaultShaders->bindShaderProgram();
 
-            cube.draw();
+            cube.transform->setRotation(cube.transform->getRotation() + glm::vec3(15.0f * deltaTime));
+            cube.draw(*defaultShaders);
 
             window->swapBuffers();
         }

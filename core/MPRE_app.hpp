@@ -17,7 +17,7 @@ namespace MPRE {
         private:
 
             std::unique_ptr<MPRE_window> window = std::make_unique<MPRE_window>();
-            std::unique_ptr<MPRE_shaders> shaders = std::make_unique<MPRE_shaders>("shaders/vertex.vert", "shaders/fragment.frag");
+            std::unique_ptr<MPRE_shaders> defaultShaders = std::make_unique<MPRE_shaders>("shaders/vertex.vert", "shaders/fragment.frag");
 
             bool ifWireframe = false;
             bool wireframeKeyPressed = false;
