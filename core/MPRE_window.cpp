@@ -12,7 +12,7 @@ namespace MPRE {
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-        window = glfwCreateWindow(WIDTH, HEIGHT, "MPRE Engine", NULL, NULL);
+        window = glfwCreateWindow(WIDTH, HEIGHT, "MPREngine", NULL, NULL);
         if (window == NULL) {
             throw std::runtime_error("Failed to create GLFW window");
             closeWindow();

@@ -20,11 +20,15 @@ namespace MPRE {
         glEnable(GL_DEPTH_TEST);
 
         // Render loop
+        double totalTime = 0.0f;
         while (!window->shouldClose()) {
             window->pollEvents();
 
             // Computing deltaTime
             computeDeltaTime();
+
+            // Global time
+            totalTime += deltaTime;
 
             // Wireframe mode on "Z" input
             if (window->isKeyPressed(GLFW_KEY_Z)) {
@@ -39,6 +43,7 @@ namespace MPRE {
             defaultShaders->bindShaderProgram();
 
             cube.transform->setRotation(cube.transform->getRotation() + glm::vec3(15.0f * deltaTime));
+            cube.transform->setPosition(glm::vec3(0.0f, sin(totalTime)/3, 0.0f));
             cube.draw(*defaultShaders);
 
             window->swapBuffers();
