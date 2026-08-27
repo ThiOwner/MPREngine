@@ -20,28 +20,21 @@ namespace MPRE {
         glEnable(GL_DEPTH_TEST);
 
         // Render loop
-        double lastTime = 0;
         while (!window->shouldClose()) {
             window->pollEvents();
 
-            // Delta time
-            double deltaTime = glfwGetTime()-lastTime;
-            lastTime = glfwGetTime();
+            // Computing deltaTime
+            computeDeltaTime();
 
             // Wireframe mode on "Z" input
             if (window->isKeyPressed(GLFW_KEY_Z)) {
-                if (!wireframeKeyPressed) {
-                    ifWireframe = !ifWireframe;
-                    if (ifWireframe) { glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); }
-                    else { glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); }
-                    wireframeKeyPressed = true;
-                }
+                handleWireframe();
             } else {
                 wireframeKeyPressed = false;
             }
 
-            glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            // glClear
+            clearBuffers();
 
             defaultShaders->bindShaderProgram();
 
