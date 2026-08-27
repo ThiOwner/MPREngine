@@ -6,7 +6,7 @@
 
 #include <memory>
 
-enum MPRE_PRIMITIVE_3D_TYPE {CUBE};
+enum MPRE_PRIMITIVE_3D_TYPE {CUBE, PYRAMID};
 
 namespace MPRE {
 
