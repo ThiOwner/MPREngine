@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MPRE_component.hpp"
+#include "MPRE_Component.hpp"
 
 #include "glm/ext/matrix_transform.hpp"
 #include "glm/vec3.hpp"

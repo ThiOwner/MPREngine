@@ -1,8 +1,8 @@
-#include "MPRE_3DPrimitive.hpp"
+#include "MPRE_MeshRenderer.hpp"
 
 namespace MPRE {
 
-    MPRE_3DPrimitive::MPRE_3DPrimitive(MPRE_PRIMITIVE_3D_TYPE type) {
+    MPRE_MeshRenderer::MPRE_MeshRenderer(MPRE_MESH_TYPE type) {
         this->type = type;
 
         if (meshCache.find(type) == meshCache.end()) {
@@ -10,7 +10,7 @@ namespace MPRE {
             std::vector<unsigned int> indices = {};
 
             switch (type) {
-                case MPRE_PRIMITIVE_3D_TYPE::CUBE:
+                case MPRE_MESH_TYPE::CUBE:
                     vertices = {
                         -0.5f, -0.5f,  0.5f,     1.0f, 0.0f, 0.0f,
                         0.5f, -0.5f,  0.5f,     0.0f, 1.0f, 0.0f,
@@ -32,7 +32,7 @@ namespace MPRE {
                     };
                     break;
 
-                case MPRE_PRIMITIVE_3D_TYPE::PYRAMID:
+                case MPRE_MESH_TYPE::PYRAMID:
                     vertices = {
                         0.0f,  0.5f,  0.0f,        1.0f, 1.0f, 1.0f,
                         -0.5f, -0.5f,  0.5f,        1.0f, 0.0f, 0.0f,
@@ -58,6 +58,11 @@ namespace MPRE {
         this->mesh = meshCache[type];
     }
 
-    MPRE_3DPrimitive::~MPRE_3DPrimitive() = default;
+    void MPRE_MeshRenderer::draw(const MPRE_shaders& shaders, const MPRE_Transform& transform) {
+        glm::mat4 modelMatrix = transform.getModelMatrix();
+        shaders.setMat4("modelMatrix", modelMatrix);
+        this->mesh->draw();
+    }
+
 
 }

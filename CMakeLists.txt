@@ -39,12 +39,14 @@ set(SRC_FILES
         core/MPRE_mesh.hpp
         core/MPRE_mesh.cpp
 
-        objects/MPRE_3DPrimitive.hpp
-        objects/MPRE_3DPrimitive.cpp
-        
         components/MPRE_Component.hpp
         components/MPRE_Transform.hpp
         components/MPRE_Transform.cpp
+        components/MPRE_MeshRenderer.hpp
+        components/MPRE_MeshRenderer.cpp
+        
+        scene/MPRE_GameObject.hpp
+        scene/MPRE_GameObject.cpp
 )
 
 # Create the executable
