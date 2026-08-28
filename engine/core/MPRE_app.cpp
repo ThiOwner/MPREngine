@@ -24,7 +24,7 @@ namespace MPRE {
             totalTime += deltaTime;
 
             // Wireframe mode on "Z" input
-            if (MPRE_Input_Manager::isKeyHeld(GLFW_KEY_Z)) {
+            if (MPRE_InputManager::isKeyHeld(GLFW_KEY_Z)) {
                 handleWireframe();
             } else {
                 wireframeKeyPressed = false;

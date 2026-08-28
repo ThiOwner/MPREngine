@@ -6,7 +6,7 @@
 
 namespace MPRE {
 
-    class MPRE_Input_Manager {
+    class MPRE_InputManager {
     public:
         static void init(GLFWwindow* w) {
             window = w;

@@ -27,7 +27,7 @@ namespace MPRE {
         }
 
         // Linkinng the window to the MPRE_Input_Manager
-        MPRE_Input_Manager::init(window);
+        MPRE_InputManager::init(window);
 
         glfwSetFramebufferSizeCallback(window, setFramebufferSizeCallback);
         return 0;

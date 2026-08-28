@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../utils/MPRE_Input_Manager.hpp"
+#include "../utils/MPRE_InputManager.hpp"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
