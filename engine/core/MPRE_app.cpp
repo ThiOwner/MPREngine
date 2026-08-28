@@ -36,7 +36,13 @@ namespace MPRE {
             // Draw a frame
             defaultShaders->bindShaderProgram();
 
-            // TODO : draw all the GameObject.
+            for (auto* obj : gameObjects) {
+                obj->update(deltaTime);
+            }
+
+            for (auto* obj : gameObjects) {
+                obj->draw(*defaultShaders);
+            }
 
             window->swapBuffers();
         }

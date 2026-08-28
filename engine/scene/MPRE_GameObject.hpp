@@ -17,7 +17,6 @@ namespace MPRE {
 
             template<typename T, typename... Args>
             T& addComponent(Args&&... args) {
-
                 auto newComponent = std::make_unique<T>(std::forward<Args>(args)...);
                 T& ref = *newComponent;
                 components.push_back(std::move(newComponent));

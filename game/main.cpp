@@ -1,4 +1,8 @@
 #include "../engine/core/MPRE_app.hpp"
+#include "../engine/scene/MPRE_GameObject.hpp"
+
+#include "../engine/components/MPRE_MeshRenderer.hpp"
+#include "../engine/components/MPRE_Camera.hpp"
 
 #include <cstdlib>
 #include <iostream>
@@ -6,9 +10,20 @@
 
 int main() {
         std::unique_ptr<MPRE::MPRE_app> app = std::make_unique<MPRE::MPRE_app>();
-        
+
         try {
                 app->init();
+
+                MPRE::MPRE_GameObject camera;
+                camera.addComponent<MPRE::MPRE_Camera>(app->window.get());
+                camera.transform.setPosition(glm::vec3(0.0f, 0.0f, 4.0f));
+
+                MPRE::MPRE_GameObject cube;
+                cube.addComponent<MPRE::MPRE_MeshRenderer>(MPRE_MESH_TYPE::CUBE);
+
+                app->addGameObject(&camera);
+                app->addGameObject(&cube);
+
                 app->run();
         }
         catch (const std::exception& e) {

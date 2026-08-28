@@ -1,13 +1,10 @@
 #pragma once
 
-#include <memory>
 #include "MPRE_window.hpp"
 #include "MPRE_shaders.hpp"
-
 #include "../scene/MPRE_GameObject.hpp"
-#include "../components/MPRE_Camera.hpp"
-#include "../utils/MPRE_Input_Manager.hpp"
-#include "../components/MPRE_MeshRenderer.hpp"
+
+#include <memory>
 
 namespace MPRE {
 
@@ -20,10 +17,16 @@ namespace MPRE {
             void init();
             void run();
 
-        private:
+            void addGameObject(MPRE_GameObject* obj) {
+               gameObjects.push_back(obj);
+            }
 
             std::unique_ptr<MPRE_window> window = std::make_unique<MPRE_window>();
+
+        private:
+
             std::unique_ptr<MPRE_shaders> defaultShaders = std::make_unique<MPRE_shaders>("shaders/vertex.vert", "shaders/fragment.frag");
+            std::vector<MPRE_GameObject*> gameObjects;
 
             static void clearBuffers() {
                 glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -50,15 +53,6 @@ namespace MPRE {
                 deltaTime = glfwGetTime()-lastTime;
                 lastTime = glfwGetTime();
             };
-
-            void checkingWindowResize(MPRE_Camera* camera) {
-                int currentWidth = 0, currentHeight = 0;
-                window->getWindowSize(currentWidth, currentHeight);
-
-                if (currentHeight > 0) {
-                    camera->setAspectRatio((float)currentWidth / (float)currentHeight);
-                }
-            }
     };
 
 }
