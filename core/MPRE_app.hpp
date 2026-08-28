@@ -49,7 +49,7 @@ namespace MPRE {
             };
 
             void checkingWindowResize(MPRE_Camera* camera) {
-                int currentWidth, currentHeight = 0;
+                int currentWidth = 0, currentHeight = 0;
                 window->getWindowSize(currentWidth, currentHeight);
 
                 if (currentHeight > 0) {

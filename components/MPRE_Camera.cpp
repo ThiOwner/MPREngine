@@ -4,7 +4,6 @@ namespace MPRE {
 
     MPRE_Camera::MPRE_Camera(float aspectRatio) {
         projectionMatrix = glm::perspective(glm::radians(90.0f), aspectRatio, 0.1f, 100.0f);
-        viewMatrix = glm::mat4(1.0f);
     }
 
     void MPRE_Camera::update(double deltaTime) {}

@@ -14,13 +14,13 @@ namespace MPRE {
             MPRE_Camera(float aspectRatio);
 
             void update(double deltaTime) override;
-            void draw(const MPRE_shaders& shaders, const MPRE_Transform& transform);
+            void draw(const MPRE_shaders& shaders, const MPRE_Transform& transform) override;
 
             void setAspectRatio(float aspectRatio);
 
         private:
             glm::mat4 projectionMatrix;
-            glm::mat4 viewMatrix;
+            glm::mat4 viewMatrix = glm::mat4(1.0f);;
     };
 
 }

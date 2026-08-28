@@ -14,9 +14,8 @@ namespace MPRE {
 
         window = glfwCreateWindow(WIDTH, HEIGHT, "MPREngine", NULL, NULL);
         if (window == NULL) {
-            throw std::runtime_error("Failed to create GLFW window");
             closeWindow();
-            return -1;
+            throw std::runtime_error("Failed to create GLFW window");
         }
 
         glfwMakeContextCurrent(window);

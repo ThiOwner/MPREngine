@@ -14,14 +14,16 @@ namespace MPRE {
 
         // Creating Camera
         MPRE_GameObject camera;
-        MPRE_Camera cameraComponent = camera.addComponent<MPRE_Camera>((float)window->WIDTH/(float)window->HEIGHT);
+        auto& cameraComponent = camera.addComponent<MPRE_Camera>((float)window->WIDTH/(float)window->HEIGHT);
 
         // Creating GameObjects
         MPRE_GameObject obj1;
         obj1.addComponent<MPRE_MeshRenderer>(MPRE_MESH_TYPE::CUBE);
-        obj1.transform.setScale(glm::vec3(0.3f));
+        obj1.transform.setScale(glm::vec3(0.2f));
 
         while (!window->shouldClose()) {
+            window->pollEvents();
+
             // Computing deltaTime
             computeDeltaTime();
             totalTime += deltaTime;
@@ -52,7 +54,6 @@ namespace MPRE {
             obj1.draw(*defaultShaders);
 
             window->swapBuffers();
-            window->pollEvents();
         }
 
     }
