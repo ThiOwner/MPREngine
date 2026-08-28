@@ -23,44 +23,35 @@ FetchContent_Declare(glm
 )
 FetchContent_MakeAvailable(glm)
 
-# Sources files
+set(GLAD_SRC "engine/include/src/glad.c")
+
+file(GLOB_RECURSE ENGINE_SRC CONFIGURE_DEPENDS
+        "engine/**/*.cpp"
+        "engine/**/*.hpp"
+)
+
+file(GLOB_RECURSE GAME_SRC CONFIGURE_DEPENDS
+        "game/*.cpp"
+        "game/**/*.cpp"
+        "game/**/*.hpp"
+)
+
+# Source files
 set(SRC_FILES
-        include/src/glad.c
-
-        main/main.cpp
-
-        utils/MPRE_Input_Manager.hpp
-
-        core/MPRE_app.hpp
-        core/MPRE_app.cpp
-        core/MPRE_window.hpp
-        core/MPRE_window.cpp
-        core/MPRE_shaders.hpp
-        core/MPRE_shaders.cpp
-        core/MPRE_mesh.hpp
-        core/MPRE_mesh.cpp
-
-        components/MPRE_Component.hpp
-        components/MPRE_Transform.hpp
-        components/MPRE_Transform.cpp
-        components/MPRE_MeshRenderer.hpp
-        components/MPRE_MeshRenderer.cpp
-        components/MPRE_Camera.hpp
-        components/MPRE_Camera.cpp
-
-        scene/MPRE_GameObject.hpp
-        scene/MPRE_GameObject.cpp
+        ${GLAD_SRC}
+        ${ENGINE_SRC}
+        ${GAME_SRC}
 )
 
 # Create the executable
 add_executable(${PROJECT_NAME} ${SRC_FILES})
 
 # Where's GLAD ?
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/engine/include)
 
 # Link GLFW and GLM to the OpenGL library
 target_link_libraries(${PROJECT_NAME} PRIVATE glm glfw opengl32 )
 
 # Copy the shaders in the runtime environment.
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/shaders
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/engine/shaders
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

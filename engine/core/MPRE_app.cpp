@@ -15,15 +15,6 @@ namespace MPRE {
 
     void MPRE_app::run() {
 
-        // Creating Camera
-        MPRE_GameObject camera;
-        auto& cameraComponent = camera.addComponent<MPRE_Camera>((float)window->WIDTH/(float)window->HEIGHT);
-
-        // Creating GameObjects
-        MPRE_GameObject obj1;
-        obj1.addComponent<MPRE_MeshRenderer>(MPRE_MESH_TYPE::CUBE);
-        obj1.transform.setScale(glm::vec3(0.2f));
-
         // Render loop
         while (!window->shouldClose()) {
             window->pollEvents();
@@ -42,20 +33,10 @@ namespace MPRE {
             // glClear
             clearBuffers();
 
-            // Keeping aspect ratio when the window is resized
-            checkingWindowResize(&cameraComponent);
-
             // Draw a frame
             defaultShaders->bindShaderProgram();
 
-            camera.update(deltaTime);
-            camera.draw(*defaultShaders);
-
-            obj1.transform.setPosition(glm::vec3(0.0f, sin(totalTime)/4, -0.45f));
-            obj1.transform.setRotation(obj1.transform.getRotation() + glm::vec3(70.0f * deltaTime * sin(totalTime)));
-
-            obj1.update(deltaTime);
-            obj1.draw(*defaultShaders);
+            // TODO : draw all the GameObject.
 
             window->swapBuffers();
         }

@@ -1,4 +1,4 @@
-#include "../core/MPRE_app.hpp"
+#include "../engine/core/MPRE_app.hpp"
 
 #include <cstdlib>
 #include <iostream>
@@ -6,7 +6,7 @@
 
 int main() {
         std::unique_ptr<MPRE::MPRE_app> app = std::make_unique<MPRE::MPRE_app>();
-
+        
         try {
                 app->init();
                 app->run();
