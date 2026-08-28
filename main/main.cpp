@@ -8,6 +8,7 @@ int main() {
         std::unique_ptr<MPRE::MPRE_app> app = std::make_unique<MPRE::MPRE_app>();
 
         try {
+                app->init();
                 app->run();
         }
         catch (const std::exception& e) {

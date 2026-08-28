@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../utils/MPRE_Input_Manager.hpp"
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <stdexcept>
@@ -24,8 +26,6 @@ namespace MPRE {
             [[nodiscard]] bool shouldClose() const { return glfwWindowShouldClose(window); }
             void pollEvents() const { glfwPollEvents(); }
             void swapBuffers() const { glfwSwapBuffers(window); }
-
-            [[nodiscard]] bool isKeyPressed(int keyCode) const { return glfwGetKey(window, keyCode) == GLFW_PRESS; }
 
             const int HEIGHT = 600;
             const int WIDTH = 800;

@@ -29,6 +29,8 @@ set(SRC_FILES
 
         main/main.cpp
 
+        utils/MPRE_Input_Manager.hpp
+
         core/MPRE_app.hpp
         core/MPRE_app.cpp
         core/MPRE_window.hpp

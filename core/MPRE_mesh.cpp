@@ -1,7 +1,5 @@
 #include "MPRE_mesh.hpp"
 
-#include "glm/fwd.hpp"
-
 namespace MPRE {
 
     MPRE_mesh::MPRE_mesh(std::vector<float> &vertices, std::vector<unsigned int> &indices) {

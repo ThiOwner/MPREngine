@@ -26,6 +26,9 @@ namespace MPRE {
             throw std::runtime_error("Failed to initialize GLAD");
         }
 
+        // Linkinng the window to the MPRE_Input_Manager
+        MPRE_Input_Manager::init(window);
+
         glfwSetFramebufferSizeCallback(window, setFramebufferSizeCallback);
         return 0;
     }

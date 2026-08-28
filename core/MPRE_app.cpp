@@ -5,12 +5,15 @@ namespace MPRE {
     MPRE_app::MPRE_app() = default;
     MPRE_app::~MPRE_app() = default;
 
-    void MPRE_app::run() {
+    void MPRE_app::init() {
         // Initialize en creating the window
         window->initializeWindow();
 
         // Compile shaders
         defaultShaders->compileShaders();
+    }
+
+    void MPRE_app::run() {
 
         // Creating Camera
         MPRE_GameObject camera;
@@ -21,6 +24,7 @@ namespace MPRE {
         obj1.addComponent<MPRE_MeshRenderer>(MPRE_MESH_TYPE::CUBE);
         obj1.transform.setScale(glm::vec3(0.2f));
 
+        // Render loop
         while (!window->shouldClose()) {
             window->pollEvents();
 
@@ -29,7 +33,7 @@ namespace MPRE {
             totalTime += deltaTime;
 
             // Wireframe mode on "Z" input
-            if (window->isKeyPressed(GLFW_KEY_Z)) {
+            if (MPRE_Input_Manager::isKeyHeld(GLFW_KEY_Z)) {
                 handleWireframe();
             } else {
                 wireframeKeyPressed = false;
@@ -47,7 +51,7 @@ namespace MPRE {
             camera.update(deltaTime);
             camera.draw(*defaultShaders);
 
-            obj1.transform.setPosition(glm::vec3(0.0f, sin(totalTime)/3, -0.45f));
+            obj1.transform.setPosition(glm::vec3(0.0f, sin(totalTime)/4, -0.45f));
             obj1.transform.setRotation(obj1.transform.getRotation() + glm::vec3(70.0f * deltaTime * sin(totalTime)));
 
             obj1.update(deltaTime);

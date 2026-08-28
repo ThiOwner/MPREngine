@@ -6,6 +6,7 @@
 
 #include "../scene/MPRE_GameObject.hpp"
 #include "../components/MPRE_Camera.hpp"
+#include "../utils/MPRE_Input_Manager.hpp"
 #include "../components/MPRE_MeshRenderer.hpp"
 
 namespace MPRE {
@@ -15,6 +16,8 @@ namespace MPRE {
         public:
             MPRE_app();
             ~MPRE_app();
+
+            void init();
             void run();
 
         private:
