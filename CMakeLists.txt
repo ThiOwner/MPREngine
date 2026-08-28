@@ -33,7 +33,6 @@ set(SRC_FILES
         core/MPRE_app.cpp
         core/MPRE_window.hpp
         core/MPRE_window.cpp
-        core/MPRE_window.cpp
         core/MPRE_shaders.hpp
         core/MPRE_shaders.cpp
         core/MPRE_mesh.hpp
@@ -44,7 +43,9 @@ set(SRC_FILES
         components/MPRE_Transform.cpp
         components/MPRE_MeshRenderer.hpp
         components/MPRE_MeshRenderer.cpp
-        
+        components/MPRE_Camera.hpp
+        components/MPRE_Camera.cpp
+
         scene/MPRE_GameObject.hpp
         scene/MPRE_GameObject.cpp
 )

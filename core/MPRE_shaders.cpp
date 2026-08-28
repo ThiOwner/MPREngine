@@ -69,6 +69,9 @@ namespace MPRE {
             throw std::runtime_error("Failed to compile shader program :" + std::string(infoLog));
         }
 
+        // Enable depth calculations
+        glEnable(GL_DEPTH_TEST);
+
         // Clean up
         glDeleteShader(vertexShader);
         glDeleteShader(fragmentShader);

@@ -3,6 +3,9 @@
 #include <memory>
 #include "MPRE_window.hpp"
 #include "MPRE_shaders.hpp"
+
+#include "../scene/MPRE_GameObject.hpp"
+#include "../components/MPRE_Camera.hpp"
 #include "../components/MPRE_MeshRenderer.hpp"
 
 namespace MPRE {
@@ -36,13 +39,23 @@ namespace MPRE {
                 }
             };
 
-            double lastTime = 0;
-            double deltaTime = glfwGetTime();
+            double lastTime = 0.0f;
+            double totalTime = 0.0f;
+            double deltaTime = 0.0f;
 
             void computeDeltaTime() {
                 deltaTime = glfwGetTime()-lastTime;
                 lastTime = glfwGetTime();
             };
+
+            void checkingWindowResize(MPRE_Camera* camera) {
+                int currentWidth, currentHeight = 0;
+                window->getWindowSize(currentWidth, currentHeight);
+
+                if (currentHeight > 0) {
+                    camera->setAspectRatio((float)currentWidth / (float)currentHeight);
+                }
+            }
     };
 
 }

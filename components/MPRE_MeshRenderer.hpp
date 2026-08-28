@@ -1,7 +1,6 @@
 #pragma once
 
 #include "MPRE_Transform.hpp"
-#include "MPRE_MeshRenderer.hpp"
 #include "../core/MPRE_mesh.hpp"
 
 #include <memory>
@@ -12,7 +11,7 @@ enum MPRE_MESH_TYPE {CUBE, PYRAMID};
 namespace MPRE {
 
     // Only one mesh for each type of meshes
-    static std::unordered_map<MPRE_MESH_TYPE, std::shared_ptr<MPRE_mesh>> meshCache;
+    inline static std::unordered_map<MPRE_MESH_TYPE, std::shared_ptr<MPRE_mesh>> meshCache;
 
     class MPRE_MeshRenderer : public MPRE_Component {
 

@@ -19,15 +19,18 @@ namespace MPRE {
             int initializeWindow();
             void closeWindow();
 
+            void getWindowSize(int& w, int& h) { glfwGetFramebufferSize(window, &w, &h); }
+
             [[nodiscard]] bool shouldClose() const { return glfwWindowShouldClose(window); }
             void pollEvents() const { glfwPollEvents(); }
             void swapBuffers() const { glfwSwapBuffers(window); }
 
             [[nodiscard]] bool isKeyPressed(int keyCode) const { return glfwGetKey(window, keyCode) == GLFW_PRESS; }
 
-        private:
             const int HEIGHT = 600;
             const int WIDTH = 800;
+
+        private:
 
             GLFWwindow* window;
 

@@ -3,7 +3,7 @@
 namespace MPRE {
 
     MPRE_window::MPRE_window() = default;
-    MPRE_window::~MPRE_window() = default;
+    MPRE_window::~MPRE_window() { closeWindow(); }
 
     int MPRE_window::initializeWindow() {
         // Initialize window

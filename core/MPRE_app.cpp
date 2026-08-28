@@ -1,6 +1,4 @@
 #include "MPRE_app.hpp"
-#include "../scene/MPRE_GameObject.hpp"
-#include "../components/MPRE_MeshRenderer.hpp"
 
 namespace MPRE {
 
@@ -14,23 +12,18 @@ namespace MPRE {
         // Compile shaders
         defaultShaders->compileShaders();
 
+        // Creating Camera
+        MPRE_GameObject camera;
+        MPRE_Camera cameraComponent = camera.addComponent<MPRE_Camera>((float)window->WIDTH/(float)window->HEIGHT);
+
         // Creating GameObjects
         MPRE_GameObject obj1;
         obj1.addComponent<MPRE_MeshRenderer>(MPRE_MESH_TYPE::CUBE);
-        obj1.transform.setScale(glm::vec3(0.33f));
+        obj1.transform.setScale(glm::vec3(0.3f));
 
-        // Enable depth calculations
-        glEnable(GL_DEPTH_TEST);
-
-        // Render loop
-        double totalTime = 0.0f;
         while (!window->shouldClose()) {
-            window->pollEvents();
-
             // Computing deltaTime
             computeDeltaTime();
-
-            // Global time
             totalTime += deltaTime;
 
             // Wireframe mode on "Z" input
@@ -43,15 +36,23 @@ namespace MPRE {
             // glClear
             clearBuffers();
 
+            // Keeping aspect ratio when the window is resized
+            checkingWindowResize(&cameraComponent);
+
+            // Draw a frame
             defaultShaders->bindShaderProgram();
 
-            obj1.transform.setPosition(glm::vec3(0.0f, sin(totalTime)/3, 0.0f));
-            obj1.transform.setRotation(obj1.transform.getRotation() + glm::vec3(20.0f * deltaTime));
+            camera.update(deltaTime);
+            camera.draw(*defaultShaders);
+
+            obj1.transform.setPosition(glm::vec3(0.0f, sin(totalTime)/3, -0.45f));
+            obj1.transform.setRotation(obj1.transform.getRotation() + glm::vec3(70.0f * deltaTime * sin(totalTime)));
 
             obj1.update(deltaTime);
             obj1.draw(*defaultShaders);
 
             window->swapBuffers();
+            window->pollEvents();
         }
 
     }
