@@ -12,14 +12,14 @@ namespace MPRE {
             switch (type) {
                 case MPRE_MESH_TYPE::CUBE:
                     vertices = {
-                        -0.5f, -0.5f,  0.5f,     1.0f, 0.0f, 0.0f,
-                        0.5f, -0.5f,  0.5f,     0.0f, 1.0f, 0.0f,
-                        0.5f,  0.5f,  0.5f,     0.0f, 0.0f, 1.0f,
-                        -0.5f,  0.5f,  0.5f,     1.0f, 1.0f, 0.0f,
-                        -0.5f, -0.5f, -0.5f,     1.0f, 0.0f, 1.0f,
-                        0.5f, -0.5f, -0.5f,     0.0f, 1.0f, 1.0f,
-                        0.5f,  0.5f, -0.5f,     1.0f, 1.0f, 1.0f,
-                        -0.5f,  0.5f, -0.5f,     0.0f, 0.0f, 0.0f
+                        -0.5f, -0.5f,  0.5f,
+                        0.5f, -0.5f,  0.5f,
+                        0.5f,  0.5f,  0.5f,
+                        -0.5f,  0.5f,  0.5f,
+                        -0.5f, -0.5f, -0.5f,
+                        0.5f, -0.5f, -0.5f,
+                        0.5f,  0.5f, -0.5f,
+                        -0.5f,  0.5f, -0.5f
                     };
 
                     indices = {
@@ -34,11 +34,11 @@ namespace MPRE {
 
                 case MPRE_MESH_TYPE::PYRAMID:
                     vertices = {
-                        0.0f,  0.5f,  0.0f,        1.0f, 1.0f, 1.0f,
-                        -0.5f, -0.5f,  0.5f,        1.0f, 0.0f, 0.0f,
-                        0.5f, -0.5f,  0.5f,        0.0f, 1.0f, 0.0f,
-                        0.5f, -0.5f, -0.5f,        0.0f, 0.0f, 1.0f,
-                        -0.5f, -0.5f, -0.5f,        1.0f, 1.0f, 0.0f
+                        0.0f,  0.5f,  0.0f,
+                        -0.5f, -0.5f,  0.5f,
+                        0.5f, -0.5f,  0.5f,
+                        0.5f, -0.5f, -0.5f,
+                        -0.5f, -0.5f, -0.5f
                     };
 
                     indices = {
@@ -48,6 +48,20 @@ namespace MPRE {
                         4, 1, 0,
                         1, 4, 3,
                         1, 3, 2
+                    };
+                    break;
+
+                case MPRE_MESH_TYPE::PLANE:
+                    vertices = {
+                    -0.5f, 0.0f,  0.5f,
+                     0.5f, 0.0f,  0.5f,
+                     0.5f, 0.0f, -0.5f,
+                    -0.5f, 0.0f, -0.5f
+                    };
+
+                    indices = {
+                        0, 1, 2,
+                        2, 3, 0
                     };
                     break;
             }
@@ -61,6 +75,7 @@ namespace MPRE {
     void MPRE_MeshRenderer::draw(const MPRE_shaders& shaders, const MPRE_Transform& transform) {
         glm::mat4 modelMatrix = transform.getModelMatrix();
         shaders.setMat4("modelMatrix", modelMatrix);
+        shaders.setVec3("baseColor", baseColor);
         this->mesh->draw();
     }
 

@@ -23,8 +23,6 @@ namespace MPRE {
 
         private:
             glm::mat4 projectionMatrix;
-            glm::mat4 viewMatrix;
-
             MPRE_window* attachedWindow;
     };
 

@@ -6,7 +6,7 @@
 #include <memory>
 #include <unordered_map>
 
-enum MPRE_MESH_TYPE {CUBE, PYRAMID};
+enum MPRE_MESH_TYPE {CUBE, PYRAMID, PLANE};
 
 namespace MPRE {
 
@@ -21,11 +21,15 @@ namespace MPRE {
             void update(double deltaTime) override {}
             void draw(const MPRE_shaders& shaders, const MPRE_Transform& transform) override;
 
+            void setColor(const glm::vec3 color) {
+                baseColor = color;
+            }
+
             MPRE_MESH_TYPE type;
 
         private:
             std::shared_ptr<MPRE_mesh> mesh;
-
+            glm::vec3 baseColor = glm::vec3(1.0f, 1.0f, 1.0f);
 
     };
 
