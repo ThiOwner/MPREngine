@@ -21,21 +21,18 @@ int main() {
                 app->addGameObject(std::move(camera));
 
                 auto floor = std::make_unique<MPRE::MPRE_GameObject>();
-                auto& meshComp1 = floor->addComponent<MPRE::MPRE_MeshRenderer>(MPRE_MESH_TYPE::PLANE);
-                meshComp1.setColor(glm::vec3(0.5f, 0.5f, 0.5f));
+                floor->addComponent<MPRE::MPRE_MeshRenderer>(MPRE_MESH_TYPE::PLANE).setColor(glm::vec3(0.5f, 0.5f, 0.5f));
                 floor->transform.setPosition(glm::vec3(0.0f, -2.0f, 0.0f));
                 floor->transform.setScale(glm::vec3(15.0f));
                 app->addGameObject(std::move(floor));
 
                 auto cube = std::make_unique<MPRE::MPRE_GameObject>();
-                auto& meshComp2 = cube->addComponent<MPRE::MPRE_MeshRenderer>(MPRE_MESH_TYPE::CUBE);
-                meshComp2.setColor(glm::vec3(0.0f, 0.3f, 0.3f));
+                cube->addComponent<MPRE::MPRE_MeshRenderer>(MPRE_MESH_TYPE::CUBE).setColor(glm::vec3(0.0f, 0.3f, 0.3f));
                 cube->addComponent<MPRE::objectMovement>(&cube->transform, glm::vec3(1.0f, 0.0f, 0.0f));
                 app->addGameObject(std::move(cube));
 
                 auto pyramid = std::make_unique<MPRE::MPRE_GameObject>();
-                auto& meshComp3 = pyramid->addComponent<MPRE::MPRE_MeshRenderer>(MPRE_MESH_TYPE::PYRAMID);
-                meshComp3.setColor(glm::vec3(0.5f, 0.0f, 0.0f));
+                pyramid->addComponent<MPRE::MPRE_MeshRenderer>(MPRE_MESH_TYPE::PYRAMID).setColor(glm::vec3(0.5f, 0.0f, 0.0f));
                 pyramid->addComponent<MPRE::objectMovement>(&pyramid->transform, glm::vec3(-1.0f,0.0f,0.0f));
                 app->addGameObject(std::move(pyramid));
 
