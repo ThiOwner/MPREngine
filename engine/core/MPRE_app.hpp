@@ -17,16 +17,18 @@ namespace MPRE {
             void init();
             void run();
 
-            void addGameObject(MPRE_GameObject* obj) {
-               gameObjects.push_back(obj);
-            }
+            MPRE_GameObject* addGameObject(std::unique_ptr<MPRE_GameObject> gameObject) {
+            MPRE_GameObject* ref = gameObject.get();
+            gameObjects.push_back(std::move(gameObject));
+            return ref;
+        }
 
             std::unique_ptr<MPRE_window> window = std::make_unique<MPRE_window>();
 
         private:
 
             std::unique_ptr<MPRE_shaders> defaultShaders = std::make_unique<MPRE_shaders>("shaders/vertex.vert", "shaders/fragment.frag");
-            std::vector<MPRE_GameObject*> gameObjects;
+            std::vector<std::unique_ptr<MPRE_GameObject>> gameObjects;
 
             static void clearBuffers() {
                 glClearColor(0.2f, 0.3f, 0.3f, 1.0f);

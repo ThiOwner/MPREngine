@@ -1,3 +1,6 @@
+# Local folder
+.idea
+
 # Prerequisites
 *.d
 

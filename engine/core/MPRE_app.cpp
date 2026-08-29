@@ -15,7 +15,7 @@ namespace MPRE {
 
     void MPRE_app::run() {
         //Starting component
-        for (auto* obj : gameObjects) {
+        for (auto& obj : gameObjects) {
             obj->start();
         }
 
@@ -40,11 +40,11 @@ namespace MPRE {
             // Draw a frame
             defaultShaders->bindShaderProgram();
 
-            for (auto* obj : gameObjects) {
+            for (auto& obj : gameObjects) {
                 obj->update(deltaTime);
             }
 
-            for (auto* obj : gameObjects) {
+            for (auto& obj : gameObjects) {
                 obj->draw(*defaultShaders);
             }
 

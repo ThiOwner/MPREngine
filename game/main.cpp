@@ -14,15 +14,14 @@ int main() {
         try {
                 app->init();
 
-                MPRE::MPRE_GameObject camera;
-                camera.addComponent<MPRE::MPRE_Camera>(app->window.get());
-                camera.addComponent<MPRE::freeCamera>(&camera.transform);
+                auto camera = std::make_unique<MPRE::MPRE_GameObject>();
+                camera->addComponent<MPRE::MPRE_Camera>(app->window.get());
+                camera->addComponent<MPRE::freeCamera>(&camera->transform);
+                app->addGameObject(std::move(camera));
 
-                MPRE::MPRE_GameObject cube;
-                cube.addComponent<MPRE::MPRE_MeshRenderer>(MPRE_MESH_TYPE::CUBE);
-
-                app->addGameObject(&camera);
-                app->addGameObject(&cube);
+                auto cube = std::make_unique<MPRE::MPRE_GameObject>();
+                cube->addComponent<MPRE::MPRE_MeshRenderer>(MPRE_MESH_TYPE::CUBE);
+                app->addGameObject(std::move(cube));
 
                 app->run();
         }
