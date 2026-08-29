@@ -2,7 +2,7 @@
 #include "../engine/scene/MPRE_GameObject.hpp"
 
 #include "../engine/components/MPRE_ImportComponents.hpp"
-#include "scripts/freeCamera.cpp"
+#include "scripts/freeCamera.hpp"
 
 #include <cstdlib>
 #include <iostream>

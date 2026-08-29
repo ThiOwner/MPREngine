@@ -26,8 +26,9 @@ namespace MPRE {
             lastMousePos = mousePos;
 
             glm::vec3 currentRot = gameObjectTransform->getRotation();
-            currentRot.y += xOffset * cameraSensibility;
+            currentRot.y -= xOffset * cameraSensibility;
             currentRot.x += yOffset * cameraSensibility;
+            currentRot.x = glm::clamp(currentRot.x, -89.0f, 89.0f);
 
             gameObjectTransform->setRotation(currentRot);
 
@@ -49,8 +50,8 @@ namespace MPRE {
         }
 
     private:
-        float cameraVelocity = 2.5f;
-        float cameraSensibility = 0.05f;
+        float cameraVelocity = 4.0f;
+        float cameraSensibility = 0.1f;
         MPRE_Transform* gameObjectTransform = nullptr;
 
         glm::vec2 lastMousePos = glm::vec2(0.0f);

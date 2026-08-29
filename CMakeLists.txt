@@ -50,7 +50,8 @@ add_executable(${PROJECT_NAME} ${SRC_FILES})
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/engine/include)
 
 # Link GLFW and GLM to the OpenGL library
-target_link_libraries(${PROJECT_NAME} PRIVATE glm glfw opengl32 )
+find_package(OpenGL REQUIRED)
+target_link_libraries(${PROJECT_NAME} PRIVATE glm glfw OpenGL::GL)
 
 # Copy the shaders in the runtime environment.
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/engine/shaders

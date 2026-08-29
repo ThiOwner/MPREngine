@@ -35,20 +35,18 @@ namespace MPRE {
 
             glm::mat4 getModelMatrix() const {return modelMatrix;}
 
-            glm::vec3 getForwardVector() const {
-                    glm::vec3 forward;
-                    forward.x = sin(glm::radians(rotation.y)) * cos(glm::radians(rotation.x));
-                    forward.y = sin(glm::radians(rotation.x));
-                    forward.z = -cos(glm::radians(rotation.y)) * cos(glm::radians(rotation.x));
-
-                    return glm::normalize(forward);
-                }
             glm::vec3 getRightVector() const {
-                    return glm::normalize(glm::cross(getForwardVector(), glm::vec3(0.0f, 1.0f, 0.0f)));
-                }
+                glm::mat4 model = getModelMatrix();
+                return glm::normalize(glm::vec3(model[0][0], model[0][1], model[0][2]));
+            }
             glm::vec3 getUpVector() const {
-                    return glm::normalize(glm::cross(getRightVector(), getForwardVector()));
-                }
+                glm::mat4 model = getModelMatrix();
+                return glm::normalize(glm::vec3(model[1][0], model[1][1], model[1][2]));
+            }
+            glm::vec3 getForwardVector() const {
+                glm::mat4 model = getModelMatrix();
+                return glm::normalize(glm::vec3(-model[2][0], -model[2][1], -model[2][2]));
+            }
 
         private:
             glm::vec3 scale;
