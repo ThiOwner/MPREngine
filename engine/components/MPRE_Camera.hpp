@@ -1,9 +1,7 @@
 #pragma once
 
-#include "MPRE_Component.hpp"
-#include "MPRE_Transform.hpp"
-
 #include "../core/MPRE_window.hpp"
+#include "MPRE_ImportComponents.hpp"
 
 #include <glm/glm.hpp>
 #include <glm/ext/matrix_clip_space.hpp>

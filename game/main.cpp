@@ -1,8 +1,8 @@
 #include "../engine/core/MPRE_app.hpp"
 #include "../engine/scene/MPRE_GameObject.hpp"
 
-#include "../engine/components/MPRE_MeshRenderer.hpp"
-#include "../engine/components/MPRE_Camera.hpp"
+#include "../engine/components/MPRE_ImportComponents.hpp"
+#include "scripts/freeCamera.cpp"
 
 #include <cstdlib>
 #include <iostream>
@@ -16,7 +16,7 @@ int main() {
 
                 MPRE::MPRE_GameObject camera;
                 camera.addComponent<MPRE::MPRE_Camera>(app->window.get());
-                camera.transform.setPosition(glm::vec3(0.0f, 0.0f, 4.0f));
+                camera.addComponent<MPRE::freeCamera>(&camera.transform);
 
                 MPRE::MPRE_GameObject cube;
                 cube.addComponent<MPRE::MPRE_MeshRenderer>(MPRE_MESH_TYPE::CUBE);
