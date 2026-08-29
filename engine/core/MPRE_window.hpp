@@ -27,8 +27,8 @@ namespace MPRE {
             void pollEvents() const { glfwPollEvents(); }
             void swapBuffers() const { glfwSwapBuffers(window); }
 
-            const int HEIGHT = 600;
-            const int WIDTH = 800;
+            const int HEIGHT = 1080;
+            const int WIDTH = 1920;
 
         private:
 

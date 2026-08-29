@@ -10,6 +10,8 @@ namespace MPRE {
         public:
             virtual ~MPRE_Component() = default;
 
+            virtual void start(){}
+
             virtual void update(double deltaTime) = 0;
 
             virtual void draw(const MPRE_shaders& shader, const MPRE_Transform& transform){}

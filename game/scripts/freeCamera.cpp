@@ -9,24 +9,52 @@ namespace MPRE {
             gameObjectTransform = gOTransform;
         }
 
-        void update(double deltaTime) {
-            if (MPRE_InputManager::isKeyHeld(GLFW_KEY_W)) {
-                gameObjectTransform->setPosition(gameObjectTransform->getPosition() + glm::vec3(0.0f, 0.0f, -cameraVelocity * deltaTime));
+        void start() override {
+            MPRE_InputManager::setMouseGrabbed(true);
+        }
+
+        void update(double deltaTime) override {
+            glm::vec2 mousePos = MPRE_InputManager::getMousePosition();
+
+            if (firstMouse) {
+                lastMousePos = mousePos;
+                firstMouse = false;
             }
-            if (MPRE_InputManager::isKeyHeld(GLFW_KEY_S)) {
-                gameObjectTransform->setPosition(gameObjectTransform->getPosition() + glm::vec3(0.0f, 0.0f, cameraVelocity * deltaTime));
-            }
-            if (MPRE_InputManager::isKeyHeld(GLFW_KEY_A)) {
-                gameObjectTransform->setPosition(gameObjectTransform->getPosition() + glm::vec3(-cameraVelocity * deltaTime, 0.0f, 0.0f));
-            }
-            if (MPRE_InputManager::isKeyHeld(GLFW_KEY_D)) {
-                gameObjectTransform->setPosition(gameObjectTransform->getPosition() + glm::vec3(cameraVelocity * deltaTime, 0.0f, 0.0f));
+
+            float xOffset = mousePos.x - lastMousePos.x;
+            float yOffset = lastMousePos.y - mousePos.y;
+            lastMousePos = mousePos;
+
+            glm::vec3 currentRot = gameObjectTransform->getRotation();
+            currentRot.y += xOffset * cameraSensibility;
+            currentRot.x += yOffset * cameraSensibility;
+
+            gameObjectTransform->setRotation(currentRot);
+
+            glm::vec3 pos = gameObjectTransform->getPosition();
+            glm::vec3 forward = gameObjectTransform->getForwardVector();
+            glm::vec3 right = gameObjectTransform->getRightVector();
+
+            float velocity = cameraVelocity * deltaTime;
+            if (MPRE_InputManager::isKeyHeld(GLFW_KEY_W)) pos += forward * velocity;
+            if (MPRE_InputManager::isKeyHeld(GLFW_KEY_S)) pos -= forward * velocity;
+            if (MPRE_InputManager::isKeyHeld(GLFW_KEY_A)) pos -= right * velocity;
+            if (MPRE_InputManager::isKeyHeld(GLFW_KEY_D)) pos += right * velocity;
+
+            gameObjectTransform->setPosition(pos);
+
+            if (MPRE_InputManager::isKeyHeld(GLFW_KEY_ESCAPE)) {
+                MPRE_InputManager::setMouseGrabbed(false);
             }
         }
 
     private:
         float cameraVelocity = 2.5f;
+        float cameraSensibility = 0.05f;
         MPRE_Transform* gameObjectTransform = nullptr;
+
+        glm::vec2 lastMousePos = glm::vec2(0.0f);
+        bool firstMouse = true;
     };
 
 }

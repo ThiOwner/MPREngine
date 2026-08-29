@@ -12,6 +12,7 @@ namespace MPRE {
             MPRE_GameObject() = default;
             ~MPRE_GameObject() = default;
 
+            void start();
             void update(double deltaTime);
             void draw(const MPRE_shaders& shader);
 

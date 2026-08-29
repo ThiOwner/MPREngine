@@ -14,6 +14,10 @@ namespace MPRE {
     }
 
     void MPRE_app::run() {
+        //Starting component
+        for (auto* obj : gameObjects) {
+            obj->start();
+        }
 
         // Render loop
         while (!window->shouldClose()) {
