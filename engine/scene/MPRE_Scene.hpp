@@ -8,7 +8,7 @@ namespace MPRE {
 
     struct sceneDirectionalLight {
         glm::vec3 direction = glm::vec3(-0.2f, -1.0f, -0.3f);
-        glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f);
+        glm::vec3 color = glm::vec3(0.8f, 0.8f, 0.8f);
         float intensity = 1.0f;
     };
 
@@ -20,7 +20,9 @@ namespace MPRE {
                 return ref;
             }
 
-            void start() {
+            void start(MPRE_shaders* shaders) {
+                shaders->setVec3("lightDir", directionalLight.direction);
+                shaders->setVec3("lightColor", directionalLight.color * directionalLight.intensity);
                 for (auto& obj : gameObjects) {
                     obj->start();
                 }
@@ -29,7 +31,6 @@ namespace MPRE {
                 for (auto& obj : gameObjects) {
                     obj->update(deltaTime);
                 }
-
                 for (auto& obj : gameObjects) {
                     obj->draw(*shaders);
                 }

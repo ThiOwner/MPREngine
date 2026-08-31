@@ -14,6 +14,11 @@ namespace MPRE {
     }
 
     void MPRE_app::run() {
+        defaultShaders->bindShaderProgram();
+
+        if (currentScene != nullptr) {
+            currentScene->start(defaultShaders.get());
+        }
 
         // Render loop
         while (!window->shouldClose()) {
@@ -34,8 +39,6 @@ namespace MPRE {
             clearBuffers();
 
             // Draw a frame
-            defaultShaders->bindShaderProgram();
-
             if (currentScene != nullptr) {
                 currentScene->run(deltaTime, defaultShaders.get());
             }

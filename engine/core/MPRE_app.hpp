@@ -19,7 +19,6 @@ namespace MPRE {
 
             void setCurrentScene(MPRE_Scene* scene) {
                 currentScene = scene;
-                scene->start();
             }
 
             std::unique_ptr<MPRE_window> window = std::make_unique<MPRE_window>();
