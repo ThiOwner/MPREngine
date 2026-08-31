@@ -5,6 +5,13 @@
 
 
 namespace MPRE {
+
+    struct sceneDirectionalLight {
+        glm::vec3 direction = glm::vec3(-0.2f, -1.0f, -0.3f);
+        glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f);
+        float intensity = 1.0f;
+    };
+
     class MPRE_Scene {
         public:
             MPRE_GameObject* addGameObject(std::unique_ptr<MPRE_GameObject> gameObject){
@@ -28,8 +35,8 @@ namespace MPRE {
                 }
             }
 
-
         private:
+            sceneDirectionalLight directionalLight;
             std::vector<std::unique_ptr<MPRE_GameObject>> gameObjects;
     };
 
