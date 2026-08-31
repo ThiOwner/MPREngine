@@ -2,7 +2,7 @@
 
 #include "MPRE_window.hpp"
 #include "MPRE_shaders.hpp"
-#include "../scene/MPRE_GameObject.hpp"
+#include "../scene/MPRE_Scene.hpp"
 
 #include <memory>
 
@@ -17,18 +17,18 @@ namespace MPRE {
             void init();
             void run();
 
-            MPRE_GameObject* addGameObject(std::unique_ptr<MPRE_GameObject> gameObject) {
-            MPRE_GameObject* ref = gameObject.get();
-            gameObjects.push_back(std::move(gameObject));
-            return ref;
-        }
+            void setCurrentScene(MPRE_Scene* scene) {
+                currentScene = scene;
+                scene->start();
+            }
 
             std::unique_ptr<MPRE_window> window = std::make_unique<MPRE_window>();
 
         private:
-
             std::unique_ptr<MPRE_shaders> defaultShaders = std::make_unique<MPRE_shaders>("shaders/vertex.vert", "shaders/fragment.frag");
             std::vector<std::unique_ptr<MPRE_GameObject>> gameObjects;
+
+            MPRE_Scene* currentScene = nullptr;
 
             static void clearBuffers() {
                 glClearColor(0.0f, 0.0f, 0.0f, 1.0f);

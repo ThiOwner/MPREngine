@@ -14,10 +14,6 @@ namespace MPRE {
     }
 
     void MPRE_app::run() {
-        //Starting component
-        for (auto& obj : gameObjects) {
-            obj->start();
-        }
 
         // Render loop
         while (!window->shouldClose()) {
@@ -40,12 +36,8 @@ namespace MPRE {
             // Draw a frame
             defaultShaders->bindShaderProgram();
 
-            for (auto& obj : gameObjects) {
-                obj->update(deltaTime);
-            }
-
-            for (auto& obj : gameObjects) {
-                obj->draw(*defaultShaders);
+            if (currentScene != nullptr) {
+                currentScene->run(deltaTime, defaultShaders.get());
             }
 
             window->swapBuffers();
